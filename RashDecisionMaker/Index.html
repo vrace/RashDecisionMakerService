@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>Welcome to Rash Decision Maker</title>
+</head>
+<body>
+	<h1>Welcome to use Rash Decision Maker RESTful Service</h1>
+	<h3>Available APIs</h3>
+	<p>
+		<b>/d[/upper bound]</b><br/>
+		Generates a random number from 1 ~ upper bound.<br/>
+    Example:<br/>
+    http://some_end_point/d/100<br/>
+		Response json:<br/>
+		{ "upper": "100", "result": "42" }<br/>
+	</p>
+  <p>
+    <b>/pick/&lt;a|b|c&gt;</b><br/>
+    Pick an item from a, b, c<br/>
+    Example:<br/>
+    http://some_end_point/pick/a|b|c<br/>
+    Response json:<br/>
+    { "item": "c" }<br/>
+  </p>
+  <p>
+    <b>/pair/&lt;a|b|c&gt;</b><br/>
+    Pair a collection of items<br/>
+    Example:<br/>
+    http://some_end_point/pair/one|two|three<br/>
+    Response json:<br/>
+    { "numPairs": "2", "pair0": { "a": "one", "b": "two" }, "pair1": { "a": "three"} }<br/>
+  </p>
+</body>

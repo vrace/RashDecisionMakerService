@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="mongoose">
+      <UniqueIdentifier>{5b3f6bd8-cb69-48bd-b96d-078577488ed3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="RashDecisionMaker.cpp" />
+    <ClCompile Include="mongoose\mongoose.c">
+      <Filter>mongoose</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpResponse.cpp" />
+    <ClCompile Include="HttpRequest.cpp" />
+    <ClCompile Include="ServiceController.cpp" />
+    <ClCompile Include="Json.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mongoose\mongoose.h">
+      <Filter>mongoose</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpResponse.h" />
+    <ClInclude Include="HttpRequest.h" />
+    <ClInclude Include="ServiceController.h" />
+    <ClInclude Include="Json.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Index.html" />
+  </ItemGroup>
+</Project>
