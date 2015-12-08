@@ -13,6 +13,8 @@ public:
 	Json* AddChild(Json *node);
 	virtual std::string ToString() const;
 
+	operator std::string() const;
+
 private:
 	std::vector<Json*> _subnodes;
 };

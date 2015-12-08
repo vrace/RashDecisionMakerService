@@ -36,6 +36,11 @@ std::string Json::ToString() const
 	return ss.str();
 }
 
+Json::operator std::string() const
+{
+	return ToString();
+}
+
 JsonObjectNode::JsonObjectNode()
 {
 }

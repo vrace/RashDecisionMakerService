@@ -67,12 +67,13 @@ CONTROLLER_IMPL(RollDice)
 
 	std::cout << val << std::endl;
 
-	std::stringstream res;
-	res << "{\"upper\":\"" << upper << "\",\"result\": \"" << val << "\"}";
+	JsonObjectNode json;
+	json.AddChild(JsonKeyValue("upper", upper));
+	json.AddChild(JsonKeyValue("result", val));
 
 	HttpResponse response;
 	response.SetCode(200);
-	response.SetContent(res.str());
+	response.SetContent(json);
 	
 	return response;
 }
@@ -81,13 +82,15 @@ CONTROLLER_IMPL(BadRequest)
 {
 	const std::string &uri = request.uri();
 	const std::string &method = request.rawMethod();
-	std::stringstream ss;
 
 	std::cout << "Bad request: " << uri << std::endl;
-	ss << "{\"uri\":\"" << uri << "\",\"method\":\"" << method << "\"}";
+
+	JsonObjectNode json;
+	json.AddChild(JsonKeyValue("uri", uri));
+	json.AddChild(JsonKeyValue("method", method));
 
 	HttpResponse response;
-	response.SetContent(ss.str());
+	response.SetContent(json);
 	
 	return response;
 }
@@ -95,8 +98,6 @@ CONTROLLER_IMPL(BadRequest)
 CONTROLLER_IMPL(RandomPick)
 {
 	const std::string &uri = request.uri();
-	std::string content;
-
 	const std::string path = "/pick/";
 	std::vector<std::string> items = ExtractItems(uri.substr(uri.find(path) + path.length()));
 
@@ -106,11 +107,13 @@ CONTROLLER_IMPL(RandomPick)
 	}
 
 	std::string item = items[rand() % items.size()];
-	content = std::string("{\"item\":\"") + item + "\"}";
+
+	JsonObjectNode json;
+	json.AddChild(JsonKeyValue("item", item));
 
 	HttpResponse response;
 	response.SetCode(200);
-	response.SetContent(content);
+	response.SetContent(json);
 
 	return response;
 }
@@ -149,7 +152,7 @@ CONTROLLER_IMPL(PairItems)
 
 	HttpResponse response;
 	response.SetCode(200);
-	response.SetContent(json.ToString());
+	response.SetContent(json);
 
 	return response;
 }
