@@ -46,7 +46,7 @@ void HttpResponse::Send(mg_connection *conn)
 {
 	mg_printf(conn, "HTTP/1.1 %d %s\r\n", _code, StatusCodeMap[_code].c_str());
 	mg_printf(conn, "Content-Type: %s\r\n", _contentType.c_str());
-	mg_printf(conn, "Content-Length: %d\r\n", _content.length());
+	mg_printf(conn, "Content-Length: %lu\r\n", _content.length());
 	mg_printf(conn, "\r\n");
 	mg_printf(conn, "%s", _content.c_str());
 }

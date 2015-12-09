@@ -88,6 +88,7 @@ CONTROLLER_IMPL(BadRequest)
 	JsonObjectNode json;
 	json.AddChild(JsonKeyValue("uri", uri));
 	json.AddChild(JsonKeyValue("method", method));
+	json.AddChild(JsonKeyValue("answer to everything", "42"));
 
 	HttpResponse response;
 	response.SetContent(json);
@@ -154,5 +155,17 @@ CONTROLLER_IMPL(PairItems)
 	response.SetCode(200);
 	response.SetContent(json);
 
+	return response;
+}
+
+CONTROLLER_IMPL(YesOrNo)
+{
+	HttpResponse response;
+	
+	JsonObjectNode json;
+	json.AddChild(JsonKeyValue("answer", rand() % 2 == 0 ? "yes" : "no"));
+	
+	response.SetCode(200);
+	response.SetContent(json);
 	return response;
 }

@@ -42,6 +42,10 @@ void RequestDispatch(mg_connection *conn, int ev, void *evdata)
 		{
 			INVOKE_CONTROLLER(PairItems);
 		}
+		else if (method == requestMethodGET && (uri == "/yesno" || uri.find("/yesno/") == 0))
+		{
+			INVOKE_CONTROLLER(YesOrNo);
+		}
 		else
 		{
 			INVOKE_CONTROLLER(BadRequest);
